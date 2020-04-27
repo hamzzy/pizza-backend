@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::group(['prefix' => '/'], function () {
+
+    Route::post('/create', 'ProductController@create');
+
+    Route::get('/product', 'ProductController@index');
+
+    Route::post('/order','OrderController@create');
 });
